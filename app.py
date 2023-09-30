@@ -6,11 +6,17 @@ openai.api_base = "https://oai.langcore.org/v1"
 
 def main():
     st.title("ボトルネック見つけるくん☆彡")
+    
+    # マテリアルデザインのテキスト入力フィールドを使って、ユーザーに課題を入力させます
     user_input = st.text_input("課題や悩んでいる内容を入力してください: ")
+    
+    # マテリアルデザインのボタンを使って、ボトルネックを調べるアクションをトリガーします
     if st.button("ボトルネックを調べる"):
         catchphrase = call_chatgpt_api(user_input)
         st.write("考えられるボトルネック: ", catchphrase)
-
+    
+    # エラーメッセージのスペースを追加します
+    st.text("")
 
 def call_chatgpt_api(input_text):
     try:
@@ -26,7 +32,6 @@ def call_chatgpt_api(input_text):
         return response.choices[0].text.strip()
     except Exception as e:
         return f"エラー: ボトルネックは分かりませんでした。{str(e)}"
-
 
 if __name__ == "__main__":
     main()
