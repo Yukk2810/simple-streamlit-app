@@ -4,6 +4,26 @@ import streamlit as st
 # この行を追加することでLangCoreでログを残すことができます
 openai.api_base = "https://oai.langcore.org/v1"
 
+# Streamlitアプリケーションの外観をカスタマイズします
+st.set_page_config(
+    page_title="ボトルネック見つけるくん☆彡",
+    page_icon="🔍",
+    layout="wide",
+    initial_sidebar_state="auto",
+)
+
+# 背景色を白に変更
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #FFFFFF;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 def main():
     st.title("ボトルネック見つけるくん☆彡")
     
